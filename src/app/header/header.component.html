@@ -1,4 +1,4 @@
-<header>
+<header style="height: auto;">
   <nav class="navbar navbar-expand-lg bg-body-tertiary">
     <div class="container-fluid">
       <button
@@ -25,7 +25,9 @@
             <a class="nav-link active" routerLink="nurse/search-by-name">Search By name</a>
           </li>
         </ul>
-          <button  class="btn btn-outline-success" type="button" routerLink="nurse/login">LogIn</button>
+        <div>
+          <button (click)="sesion()" id="sessionBtn" class="btn btn-outline-success" type="button" routerLink="nurse/login">Log In - Log Out</button>
+        </div>
       </div>
     </div>
   </nav>

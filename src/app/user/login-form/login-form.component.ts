@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component,OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 @Component({
   selector: 'app-login-form',
@@ -8,21 +8,26 @@ import { Router } from '@angular/router';
   styleUrl: './login-form.component.css',
 })
 export class LoginFormComponent implements OnInit {
-  isLogged: boolean = false;
   email: string = '';
   password: string = '';
 
-  ngOnInit(): void {
-      
-  }
   constructor(private router: Router) {}
+
+  ngOnInit(): void {
+      if(localStorage.getItem("isLogged") == "true"){
+        this.router.navigate(["dashboard"])
+      }
+  }
+  
 
   login() {
     if (this.email === 'jon@gmail.com' && this.password === '1234') {
-      this.isLogged = true;
-      this.router.navigate(["dashboard"]); 
+      localStorage.setItem("name", this.email.replace("@gmail.com",""))
+      localStorage.setItem("isLogged", "true")
+      this.router.navigate(["dashboard"]);
     } else {
       alert('Credenciales incorrectas');
+      localStorage.setItem("isLogged", "false")
     }
   }
 }

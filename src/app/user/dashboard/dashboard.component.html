@@ -1,74 +1,89 @@
-<div style="height: 80vh;" class="container-fluid">
-  <div class="row">
-    <nav class="col-md-2 d-none d-md-block bg-light sidebar">
-      <div class="sidebar-sticky">
-        <h5 class="sidebar-heading text-center my-4">Dashboard</h5>
-        <ul class="nav flex-column">
+<div style="height: 95vh" class="container-fluid">
+  <div class="row h-100">
+    <!-- Sidebar -->
+    <nav class="col-md-2 d-flex flex-column bg-light">
+      <div
+        class="sidebar-sticky d-flex flex-column h-100"
+      >
+        <ul class="nav flex-column gap-3">
           <li class="nav-item">
-            <a class="nav-link active" href="#"> Home </a>
+            <a class="nav-link active"> Dashboard </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#"> Profile </a>
+            <a class="nav-link"> Pacientes </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#"> Messages </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#"> Settings </a>
+            <a class="nav-link"> Estadísticas </a>
           </li>
         </ul>
       </div>
     </nav>
-
-    <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+    <main class="col-md-9 ml-sm-auto col-lg-10 px-4">
       <div
-        class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom"
+        class="d-flex flex-column flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom"
       >
         <h1 class="h2">Dashboard</h1>
+        <h3>Bienvenido/a {{nurseName}}</h3>
       </div>
-
-      <div class="row">
-        <div class="col-md-4">
-          <div class="card mb-4 shadow-sm">
-            <div class="card-header">
-              <h4 class="my-0 font-weight-normal">Card 1</h4>
-            </div>
+      <div class="d-flex gap-2">
+        <div class="w-75">
+          <div class="card">
             <div class="card-body">
-              <p class="card-text">
-                Some quick example text to build on the card title and make up
-                the bulk of the card's content.
-              </p>
-              <a href="#" class="btn btn-primary">Go somewhere</a>
+              <h5 class="card-title">Estadística 1</h5>
+              <p class="card-text">Datos aquí</p>
             </div>
           </div>
         </div>
-        <div class="col-md-4">
-          <div class="card mb-4 shadow-sm">
-            <div class="card-header">
-              <h4 class="my-0 font-weight-normal">Card 2</h4>
-            </div>
+        <div class="w-75">
+          <div class="card">
             <div class="card-body">
-              <p class="card-text">
-                Some quick example text to build on the card title and make up
-                the bulk of the card's content.
-              </p>
-              <a href="#" class="btn btn-primary">Go somewhere</a>
+              <h5 class="card-title">Estadística 2</h5>
+              <p class="card-text">Datos aquí</p>
             </div>
           </div>
         </div>
-        <div class="col-md-4">
-          <div class="card mb-4 shadow-sm">
-            <div class="card-header">
-              <h4 class="my-0 font-weight-normal">Card 3</h4>
-            </div>
+        <div class="w-75">
+          <div class="card">
             <div class="card-body">
-              <p class="card-text">
-                Some quick example text to build on the card title and make up
-                the bulk of the card's content.
-              </p>
-              <a href="#" class="btn btn-primary">Go somewhere</a>
+              <h5 class="card-title">Estadística 3</h5>
+              <p class="card-text">Datos aquí</p>
             </div>
           </div>
+        </div>
+      </div>
+      <div class="mt-4">
+        <div class="card h-auto">
+          <h5 class="card-title">Lista de Pacientes</h5>
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Edad</th>
+                <th scope="col">Estado</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th>1</th>
+                <td>Paciente 1</td>
+                <td>Edad 1</td>
+                <td>Estado 1</td>
+              </tr>
+              <tr>
+                <th>2</th>
+                <td>Paciente 2</td>
+                <td>Edad 2</td>
+                <td>Estado 2</td>
+              </tr>
+              <tr>
+                <th>3</th>
+                <td>Paciente 3</td>
+                <td>Edad 3</td>
+                <td>Estado 3</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div>
     </main>
