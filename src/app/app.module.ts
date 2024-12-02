@@ -11,6 +11,8 @@ import { LoginFormComponent } from './user/login-form/login-form.component';
 import { FormsModule } from '@angular/forms';
 import { DashboardComponent } from './user/dashboard/dashboard.component';
 import { LandingPageComponent } from './landing-page/landing-page.component';
+import { ListAllComponent } from './user/list-all/list-all.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -22,8 +24,9 @@ import { LandingPageComponent } from './landing-page/landing-page.component';
     LoginFormComponent,
     DashboardComponent,
     LandingPageComponent,
+    ListAllComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, FormsModule],
+  imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
   providers: [],
   bootstrap: [AppComponent],
 })
