@@ -8,7 +8,7 @@ import { Component } from '@angular/core';
 })
 export class SearchByNameComponent {
   name: string = '';
-  handleOnSubmit(event: Event) {
+  handleOnSearch(event: Event) {
     event.preventDefault();
     console.log(this.name);
   }
