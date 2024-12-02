@@ -1,21 +1,18 @@
 <div class="container-lg">
   <h3>Search nurse by its name</h3>
-
-  <div class="row">
-    <form
-      class="d-flex col-12 col-md-6 col-lg-4"
-      role="search"
-      (submit)="handleOnSearch($event)"
-    >
-      <input
-        class="form-control me-2"
-        type="search"
-        placeholder="Enter name"
-        aria-label="Search"
-        [(ngModel)]="name"
-        name="name"
-      />
-      <button class="btn btn-outline-success" type="submit">Search</button>
-    </form>
-  </div>
+  <form
+    class="d-flex col-12 col-md-6 col-lg-4"
+    role="search"
+    (submit)="handleOnSearch($event)"
+  >
+    <input
+      class="form-control me-2"
+      type="search"
+      placeholder="Enter name"
+      aria-label="Search"
+      [(ngModel)]="name"
+      name="name"
+    />
+    <button class="btn btn-outline-success" type="submit">Search</button>
+  </form>
 </div>
