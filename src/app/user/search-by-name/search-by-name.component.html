@@ -1,0 +1,39 @@
+<div class="container-lg">
+  <h3 class="mt-2 mb-5">Search nurse by its name</h3>
+  <form
+    class="d-flex col-12 col-md-6 col-lg-4"
+    role="search"
+    (submit)="handleOnSearch($event)"
+  >
+    <input
+      class="form-control me-2"
+      type="search"
+      placeholder="Enter name"
+      aria-label="Search"
+      [(ngModel)]="name"
+      name="name"
+    />
+    <button class="btn btn-outline-success" type="submit">Search</button>
+  </form>
+  <div class="results" *ngIf="isNurseFound; else notFound">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">Name</th>
+          <th scope="col">Surname</th>
+          <th scope="col">E-mail</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let nurse of resultNursesList">
+          <th scope="row">{{ nurse.name }}</th>
+          <td>{{ nurse.surname }}</td>
+          <td>{{ nurse.email }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<ng-template #notFound>
+  <p class="text-secondary my-4">No nurses found with this name</p>
+</ng-template>

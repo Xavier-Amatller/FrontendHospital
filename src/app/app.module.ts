@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { MainComponent } from './main/main.component';
 import { FooterComponent } from './footer/footer.component';
+import { SearchByNameComponent } from './user/search-by-name/search-by-name.component';
 import { LoginFormComponent } from './user/login-form/login-form.component';
 import { FormsModule } from '@angular/forms';
 import { DashboardComponent } from './user/dashboard/dashboard.component';
@@ -19,6 +20,7 @@ import { HttpClientModule } from '@angular/common/http';
     HeaderComponent,
     MainComponent,
     FooterComponent,
+    SearchByNameComponent,
     LoginFormComponent,
     DashboardComponent,
     LandingPageComponent,
