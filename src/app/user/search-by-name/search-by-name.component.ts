@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import NURSES_TEST from '../../nurses-show-all.json';
 @Component({
   selector: 'app-search-by-name',
   standalone: false,
@@ -8,8 +9,15 @@ import { Component } from '@angular/core';
 })
 export class SearchByNameComponent {
   name: string = '';
+  resultNursesList: any[] = NURSES_TEST;
+
+  isNurseFound: boolean = this.resultNursesList.length !== 0;
   handleOnSearch(event: Event) {
     event.preventDefault();
-    console.log(this.name);
+    this.resultNursesList = NURSES_TEST.filter((nurse) =>
+      nurse.name.toLowerCase().includes(this.name.trim().toLowerCase())
+    );
+
+    this.isNurseFound = this.resultNursesList.length !== 0;
   }
 }
