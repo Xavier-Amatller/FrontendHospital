@@ -1,11 +1,13 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { MainComponent } from './main/main.component';
 import { FooterComponent } from './footer/footer.component';
+import { SearchByNameComponent } from './user/search-by-name/search-by-name.component';
 import { LoginFormComponent } from './user/login-form/login-form.component';
 import { FormsModule } from '@angular/forms';
 import { DashboardComponent } from './user/dashboard/dashboard.component';
@@ -17,6 +19,7 @@ import { LandingPageComponent } from './landing-page/landing-page.component';
     HeaderComponent,
     MainComponent,
     FooterComponent,
+    SearchByNameComponent,
     LoginFormComponent,
     DashboardComponent,
     LandingPageComponent,
