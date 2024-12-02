@@ -8,6 +8,10 @@ import { HeaderComponent } from './header/header.component';
 import { MainComponent } from './main/main.component';
 import { FooterComponent } from './footer/footer.component';
 import { SearchByNameComponent } from './user/search-by-name/search-by-name.component';
+import { LoginFormComponent } from './user/login-form/login-form.component';
+import { FormsModule } from '@angular/forms';
+import { DashboardComponent } from './user/dashboard/dashboard.component';
+import { LandingPageComponent } from './landing-page/landing-page.component';
 
 @NgModule({
   declarations: [
@@ -16,6 +20,9 @@ import { SearchByNameComponent } from './user/search-by-name/search-by-name.comp
     MainComponent,
     FooterComponent,
     SearchByNameComponent,
+    LoginFormComponent,
+    DashboardComponent,
+    LandingPageComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule],
   providers: [],
