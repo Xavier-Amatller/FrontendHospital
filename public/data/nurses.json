@@ -1,0 +1,38 @@
+[
+    {
+        "name": "Monica ",
+        "surname": "Oliveres",
+        "email": "monica@gmail.com",
+        "password": "2222"
+    },
+    {
+        "name": "Xavier",
+        "surname": "Amatller",
+        "email": "xavier@gmail.com",
+        "password": "3333"
+    },
+    {
+        "name": "Perita23",
+        "surname": "Peras",
+        "email": "hugobed@gmail.com",
+        "password": "1234"
+    },
+    {
+        "name": "juan",
+        "surname": "Perez",
+        "email": "juan@stucom.com",
+        "password": "1212"
+    },
+    {
+        "name": "pepito",
+        "surname": "pepitez",
+        "email": "usuario@dominio2.com",
+        "password": "1234"
+    },
+    {
+        "name": "John",
+        "surname": "Doe",
+        "email": "john.doe@example.com",
+        "password": "password123"
+    }
+]
