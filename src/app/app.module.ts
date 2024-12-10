@@ -13,6 +13,7 @@ import { DashboardComponent } from './user/dashboard/dashboard.component';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { ListAllComponent } from './user/list-all/list-all.component';
 import { HttpClientModule } from '@angular/common/http';
+import { RegisterFormComponent } from './user/register-form/register-form.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { HttpClientModule } from '@angular/common/http';
     DashboardComponent,
     LandingPageComponent,
     ListAllComponent,
+    RegisterFormComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
   providers: [],
