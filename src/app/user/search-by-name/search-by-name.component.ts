@@ -9,34 +9,22 @@ import { UserServiceService } from '../user-service.service';
   styleUrl: './search-by-name.component.css',
 })
 export class SearchByNameComponent {
-
-  
   NURSES_TEST: any[] = [];
   name: string = '';
   resultNursesList: any[] = [];
   isNurseFound: boolean = false;
 
   constructor(private userService: UserServiceService) {}
-
+  nurses: any = [];
   ngOnInit(): void {
-    // this.userService.getAllUsers().subscribe({
-    //   next: (response) => {
-    //     this.NURSES_TEST = response;
-    //     this.resultNursesList = response;
-    //   },
-    //   error: function (error){
-    //     console.log(error);
-    //     console.log(Response)
-    //   }
-    // });
+    this.nurses = this.userService.getAllUsers();
+    console.log("aa")
   }
 
-  handleOnSearch(event: Event) {
-    console.log(this.NURSES_TEST)
-    event.preventDefault();
-    this.resultNursesList = this.NURSES_TEST.filter((nurse) =>
-      nurse.name.toLowerCase().includes(this.name.trim().toLowerCase())
-    );
-    this.isNurseFound = this.resultNursesList.length !== 0;
+  searchNurse(){
+    console.log("called");
+    this.nurses =  this.userService.getUsersByName(this.name);
+    
+    
   }
 }

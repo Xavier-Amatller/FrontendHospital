@@ -1,22 +1,28 @@
 import { Injectable } from '@angular/core';
-import  NURSES from "../../assets/data/nurses.json"
+import NURSES from '../../assets/data/nurses.json';
+import { filter } from 'rxjs';
 @Injectable({
   providedIn: 'root',
 })
 export class UserServiceService {
-
-  filteredNurses: Array<any> = [];
   getAllUsers(): Array<any> {
-
-
+    let filteredNurses: Array<any> = [];
     NURSES.forEach((nurse) => {
-      this.filteredNurses.push({
+      filteredNurses.push({
         name: nurse.name,
         surname: nurse.surname,
-        email:nurse.email
+        email: nurse.email,
       });
     });
 
-    return this.filteredNurses;
+    return filteredNurses;
+  }
+
+  getUsersByName(name: string) {
+    let nurses = this.getAllUsers();
+    console.log("serv")
+    return nurses.filter((nurse) =>
+      nurse.name.toLowerCase().includes(nurse.name.trim().toLowerCase())
+    );
   }
 }
