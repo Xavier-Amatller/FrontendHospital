@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import NURSES_TEST from '../../nurses-show-all.json';
+import { HttpClient } from '@angular/common/http';
 @Component({
   selector: 'app-search-by-name',
   standalone: false,
@@ -8,16 +8,36 @@ import NURSES_TEST from '../../nurses-show-all.json';
   styleUrl: './search-by-name.component.css',
 })
 export class SearchByNameComponent {
-  name: string = '';
-  resultNursesList: any[] = NURSES_TEST;
 
-  isNurseFound: boolean = this.resultNursesList.length !== 0;
+  
+  NURSES_TEST: any[] = [];
+  name: string = '';
+  resultNursesList: any[] = [];
+  isNurseFound: boolean = false;
+
+  constructor(private http: HttpClient) {}
+
+  ngOnInit(): void {
+    this.getUsers();
+  }
+
+  getUsers() {
+    this.http.get<any[]>('assets/data/nurses.json').subscribe(
+      (data: any[]) => {
+        this.NURSES_TEST = data;
+        this.resultNursesList = data;
+      },
+      (error) => {
+        console.error('Error al cargar usuarios:', error);
+      }
+    );
+  }
+
   handleOnSearch(event: Event) {
     event.preventDefault();
-    this.resultNursesList = NURSES_TEST.filter((nurse) =>
+    this.resultNursesList = this.NURSES_TEST.filter((nurse) =>
       nurse.name.toLowerCase().includes(this.name.trim().toLowerCase())
     );
-
     this.isNurseFound = this.resultNursesList.length !== 0;
   }
 }
