@@ -11,12 +11,24 @@ import { Observable } from 'rxjs';
 export class UserServiceService {
   constructor(private http: HttpClient) {}
 
-  getAllUsers(): Observable<any> {
-    return this.http.get(
-      'data/nurses.json', 
-      {
+  filteredNurses: Array<any> = [];
+  nurses: any = [];
+  getAllUsers(): Array<any> {
+    this.http
+      .get('data/nurses.json', {
         headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
-      }
-    );
+      })
+      .subscribe((response) => {
+        this.nurses = response;
+        console.log(this.nurses)
+      });
+
+    this.nurses.forEach((element) => {
+      this.filteredNurses.push({
+        name: element.name,
+      });
+    });
+
+    return this.filteredNurses;
   }
 }

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { UserServiceService } from '../user-service.service';
 @Component({
   selector: 'app-search-by-name',
   standalone: false,
@@ -15,25 +16,23 @@ export class SearchByNameComponent {
   resultNursesList: any[] = [];
   isNurseFound: boolean = false;
 
-  constructor(private http: HttpClient) {}
+  constructor(private userService: UserServiceService) {}
 
   ngOnInit(): void {
-    this.getUsers();
-  }
-
-  getUsers() {
-    this.http.get<any[]>('assets/data/nurses.json').subscribe(
-      (data: any[]) => {
-        this.NURSES_TEST = data;
-        this.resultNursesList = data;
+    this.userService.getAllUsers().subscribe({
+      next: (response) => {
+        this.NURSES_TEST = response;
+        this.resultNursesList = response;
       },
-      (error) => {
-        console.error('Error al cargar usuarios:', error);
+      error: function (error){
+        console.log(error);
+        console.log(Response)
       }
-    );
+    });
   }
 
   handleOnSearch(event: Event) {
+    console.log(this.NURSES_TEST)
     event.preventDefault();
     this.resultNursesList = this.NURSES_TEST.filter((nurse) =>
       nurse.name.toLowerCase().includes(this.name.trim().toLowerCase())
