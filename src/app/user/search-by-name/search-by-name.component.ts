@@ -19,16 +19,16 @@ export class SearchByNameComponent {
   constructor(private userService: UserServiceService) {}
 
   ngOnInit(): void {
-    this.userService.getAllUsers().subscribe({
-      next: (response) => {
-        this.NURSES_TEST = response;
-        this.resultNursesList = response;
-      },
-      error: function (error){
-        console.log(error);
-        console.log(Response)
-      }
-    });
+    // this.userService.getAllUsers().subscribe({
+    //   next: (response) => {
+    //     this.NURSES_TEST = response;
+    //     this.resultNursesList = response;
+    //   },
+    //   error: function (error){
+    //     console.log(error);
+    //     console.log(Response)
+    //   }
+    // });
   }
 
   handleOnSearch(event: Event) {

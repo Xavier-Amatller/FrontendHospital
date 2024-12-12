@@ -1,31 +1,19 @@
 import { Injectable } from '@angular/core';
-import {
-  HttpClient,
-  HttpErrorResponse,
-  HttpHeaders,
-} from '@angular/common/http';
-import { Observable } from 'rxjs';
+import  NURSES from "../../assets/data/nurses.json"
 @Injectable({
   providedIn: 'root',
 })
 export class UserServiceService {
-  constructor(private http: HttpClient) {}
 
   filteredNurses: Array<any> = [];
-  nurses: any = [];
   getAllUsers(): Array<any> {
-    this.http
-      .get('data/nurses.json', {
-        headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
-      })
-      .subscribe((response) => {
-        this.nurses = response;
-        console.log(this.nurses)
-      });
 
-    this.nurses.forEach((element) => {
+
+    NURSES.forEach((nurse) => {
       this.filteredNurses.push({
-        name: element.name,
+        name: nurse.name,
+        surname: nurse.surname,
+        email:nurse.email
       });
     });
 
