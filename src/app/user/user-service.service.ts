@@ -20,9 +20,6 @@ export class UserServiceService {
 
   getUsersByName(name: string) {
     let nurses = this.getAllUsers();
-    console.log("serv")
-    return nurses.filter((nurse) =>
-      nurse.name.toLowerCase().includes(nurse.name.trim().toLowerCase())
-    );
+      return nurses.filter(nurse => nurse.name.trim().toLowerCase() == name.trim().toLowerCase())
   }
 }

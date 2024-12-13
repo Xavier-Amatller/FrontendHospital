@@ -18,13 +18,9 @@ export class SearchByNameComponent {
   nurses: any = [];
   ngOnInit(): void {
     this.nurses = this.userService.getAllUsers();
-    console.log("aa")
   }
 
-  searchNurse(){
-    console.log("called");
-    this.nurses =  this.userService.getUsersByName(this.name);
-    
-    
+  handleOnSearch(){
+    this.nurses =  this.userService.getUsersByName(this.name); 
   }
 }

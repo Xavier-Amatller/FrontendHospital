@@ -11,9 +11,8 @@
       aria-label="Search"
       [(ngModel)]="name"
       name="name"
-      (ngSubmit)="searchNurse()"
     />
-    <button class="btn btn-outline-success" type="submit">Search</button>
+    <button class="btn btn-outline-success" type="submit" (click)="handleOnSearch()">Search</button>
   </form>
   <div class="results" *ngIf="nurses.length != 0">
     <table class="table table-sm" border="1">
