@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { UserServiceService } from '../user-service.service';
+import { UsersService } from '../users.service';
 @Component({
   selector: 'app-search-by-name',
   standalone: false,
@@ -14,7 +14,7 @@ export class SearchByNameComponent {
   resultNursesList: any[] = [];
   isNurseFound: boolean = false;
 
-  constructor(private userService: UserServiceService) {}
+  constructor(private userService: UsersService) {}
   nurses: any = [];
   ngOnInit(): void {
     this.nurses = this.userService.getAllUsers(false);

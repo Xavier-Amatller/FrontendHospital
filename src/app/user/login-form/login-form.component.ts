@@ -1,6 +1,6 @@
 import { Component,OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { UserServiceService } from '../user-service.service';
+import { UsersService } from '../users.service';
 @Component({
   selector: 'app-login-form',
   standalone: false,
@@ -12,7 +12,7 @@ export class LoginFormComponent implements OnInit {
   email: string = '';
   password: string = '';
 
-  constructor(private router: Router, private userService: UserServiceService) {}
+  constructor(private router: Router, private userService: UsersService) {}
 
   ngOnInit(): void {
       if(localStorage.getItem("isLogged") == "true"){

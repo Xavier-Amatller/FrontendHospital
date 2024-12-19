@@ -4,7 +4,8 @@ import { filter } from 'rxjs';
 @Injectable({
   providedIn: 'root',
 })
-export class UserServiceService {
+export class UsersService {
+
   getAllUsers(password: boolean): Array<any> {
     if (password) {
       return NURSES;
@@ -22,6 +23,7 @@ export class UserServiceService {
   }
 
   getUsersByName(name: string) {
+    if (name == "") return this.getAllUsers(false);
     let nurses = this.getAllUsers(false);
     return nurses.filter(
       (nurse) => nurse.name.trim().toLowerCase() == name.trim().toLowerCase()
@@ -41,14 +43,14 @@ export class UserServiceService {
 
   register(name: string, surname: string, email: string, password: string) {
     let nurses = this.getAllUsers(true);
-    if(
+    if (
       nurses.filter(
         (nurse) =>
           nurse.email.trim().toLowerCase() == email.trim().toLowerCase()
       ).length == 1
-    ){
+    ) {
       return false;
-    }else{
+    } else {
       NURSES.push({
         "name": name,
         "surname": surname,
@@ -57,7 +59,7 @@ export class UserServiceService {
       })
 
       console.log(this.getAllUsers(true));
-      
+
       return true
     }
   }
