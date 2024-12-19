@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { UserServiceService } from '../user-service.service';
 
 @Component({
   selector: 'app-register-form',
@@ -14,7 +15,7 @@ export class RegisterFormComponent {
   email: string = '';
   password: string = '';
 
-  constructor(private router: Router) { }
+  constructor(private router: Router,private userService: UserServiceService) { }
 
   ngOnInit(): void {
     if (localStorage.getItem("isLogged") == "true") {
@@ -23,10 +24,12 @@ export class RegisterFormComponent {
   }
 
 
-  login() {
+  register() {
     if (this.validate()) {
       //HACER PETICION AL SERVICIO PARA INSERTAR UN NUEVO USUARIO (SIMULADO)
-      this.router.navigate(["nurse/login"]);
+      if(this.userService.register(this.name, this.surname, this.email, this.password)){
+        this.router.navigate(["nurse/login"]);
+      }
     }
   }
 

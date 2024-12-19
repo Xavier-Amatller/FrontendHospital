@@ -12,6 +12,6 @@ export class ListAllComponent implements OnInit {
   users: any = [];
   constructor(private userService: UserServiceService) {}
   ngOnInit(): void {
-    this.users = this.userService.getAllUsers()
+    this.users = this.userService.getAllUsers(false)
   }
 }

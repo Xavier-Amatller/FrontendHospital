@@ -17,7 +17,7 @@ export class SearchByNameComponent {
   constructor(private userService: UserServiceService) {}
   nurses: any = [];
   ngOnInit(): void {
-    this.nurses = this.userService.getAllUsers();
+    this.nurses = this.userService.getAllUsers(false);
   }
 
   handleOnSearch(){

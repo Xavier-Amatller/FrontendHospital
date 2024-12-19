@@ -8,7 +8,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrl: './header.component.css',
 })
 export class HeaderComponent implements OnInit {
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    
+  }
 
   isLogged(): boolean {
     return localStorage.getItem('isLogged') == 'true';
