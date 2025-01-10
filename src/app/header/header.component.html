@@ -24,7 +24,12 @@
             <button id="sessionBtn" class="btn btn-outline-success" type="button" routerLink="nurse/login">Log In</button>
           </div>
           <div *ngIf="isLogged()">
-            <button (click)="closeSession()" id="sessionBtn" class="btn btn-outline-success" type="button" routerLink="nurse/login">Log out</button>
+            <div class="d-flex gap-4">
+              <button (click)="closeSession()" id="sessionBtn" class="btn btn-outline-success" type="button" routerLink="nurse/login">Log out</button>
+              <button id="profileBtn" class="btn btn-outline-primary" type="button" routerLink="nurse/profile">
+                <img src="#" alt="Profile" style="width: 30px; height: 30px; border-radius: 50%;" />
+              </button>
+            </div>
           </div>
         </div>
       </div>

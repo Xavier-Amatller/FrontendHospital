@@ -12,8 +12,8 @@ import { FormsModule } from '@angular/forms';
 import { DashboardComponent } from './user/dashboard/dashboard.component';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { ListAllComponent } from './user/list-all/list-all.component';
-import { HttpClientModule } from '@angular/common/http';
 import { RegisterFormComponent } from './user/register-form/register-form.component';
+import { ProfileMenuComponent } from './user/profile-menu/profile-menu.component';
 
 @NgModule({
   declarations: [
@@ -27,8 +27,9 @@ import { RegisterFormComponent } from './user/register-form/register-form.compon
     LandingPageComponent,
     ListAllComponent,
     RegisterFormComponent,
+    ProfileMenuComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
+  imports: [BrowserModule, AppRoutingModule, FormsModule],
   providers: [],
   bootstrap: [AppComponent],
 })
