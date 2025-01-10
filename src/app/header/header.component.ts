@@ -9,11 +9,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
   ngOnInit(): void {
+    
   }
 
-  sesion() {
-    if (localStorage.getItem('isLogged') == 'true') {
-      localStorage.setItem('isLogged', 'false');
-    }
+  isLogged(): boolean {
+    return localStorage.getItem('isLogged') == 'true';
+  }
+
+  closeSession() {
+    localStorage.setItem('isLogged', 'false');
   }
 }

@@ -1,5 +1,6 @@
 import { Component,OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { UsersService } from '../users.service';
 @Component({
   selector: 'app-login-form',
   standalone: false,
@@ -11,7 +12,7 @@ export class LoginFormComponent implements OnInit {
   email: string = '';
   password: string = '';
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private userService: UsersService) {}
 
   ngOnInit(): void {
       if(localStorage.getItem("isLogged") == "true"){
@@ -21,7 +22,7 @@ export class LoginFormComponent implements OnInit {
   
 
   login() {
-    if (this.email === 'jon@gmail.com' && this.password === '1234') {
+    if (this.userService.login(this.email, this.password)) {
       localStorage.setItem("name", this.email.replace("@gmail.com",""))
       localStorage.setItem("isLogged", "true")
       this.router.navigate(["dashboard"]);

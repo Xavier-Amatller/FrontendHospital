@@ -3,7 +3,6 @@
   <form
     class="d-flex col-12 col-md-6 col-lg-4"
     role="search"
-    (submit)="handleOnSearch($event)"
   >
     <input
       class="form-control me-2"
@@ -13,20 +12,22 @@
       [(ngModel)]="name"
       name="name"
     />
-    <button class="btn btn-outline-success" type="submit">Search</button>
+    <button class="btn btn-outline-success" type="submit" (click)="handleOnSearch()">Search</button>
   </form>
-  <div class="results" *ngIf="isNurseFound; else notFound">
-    <table class="table table-striped">
+  <div class="results" *ngIf="nurses.length != 0">
+    <table class="table table-sm" border="1">
       <thead>
         <tr>
+          <th scope="col">#</th>
           <th scope="col">Name</th>
           <th scope="col">Surname</th>
-          <th scope="col">E-mail</th>
+          <th scope="col">Email</th>
         </tr>
       </thead>
-      <tbody>
-        <tr *ngFor="let nurse of resultNursesList">
-          <th scope="row">{{ nurse.name }}</th>
+      <tbody class="mb-4">
+        <tr *ngFor="let nurse of nurses; let i = index">
+          <td>{{ i + 1 }}</td>
+          <td>{{ nurse.name }}</td>
           <td>{{ nurse.surname }}</td>
           <td>{{ nurse.email }}</td>
         </tr>

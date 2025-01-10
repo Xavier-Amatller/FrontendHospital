@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import NURSES_TEST from '../../nurses-show-all.json';
+import { HttpClient } from '@angular/common/http';
+import { UsersService } from '../users.service';
 @Component({
   selector: 'app-search-by-name',
   standalone: false,
@@ -8,16 +9,18 @@ import NURSES_TEST from '../../nurses-show-all.json';
   styleUrl: './search-by-name.component.css',
 })
 export class SearchByNameComponent {
+  NURSES_TEST: any[] = [];
   name: string = '';
-  resultNursesList: any[] = NURSES_TEST;
+  resultNursesList: any[] = [];
+  isNurseFound: boolean = false;
 
-  isNurseFound: boolean = this.resultNursesList.length !== 0;
-  handleOnSearch(event: Event) {
-    event.preventDefault();
-    this.resultNursesList = NURSES_TEST.filter((nurse) =>
-      nurse.name.toLowerCase().includes(this.name.trim().toLowerCase())
-    );
+  constructor(private userService: UsersService) {}
+  nurses: any = [];
+  ngOnInit(): void {
+    this.nurses = this.userService.getAllUsers(false);
+  }
 
-    this.isNurseFound = this.resultNursesList.length !== 0;
+  handleOnSearch(){
+    this.nurses =  this.userService.getUsersByName(this.name); 
   }
 }
