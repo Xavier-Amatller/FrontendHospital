@@ -1,4 +1,4 @@
-import { Component,OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UsersService } from '../users.service';
 @Component({
@@ -15,20 +15,41 @@ export class LoginFormComponent implements OnInit {
   constructor(private router: Router, private userService: UsersService) {}
 
   ngOnInit(): void {
-      if(localStorage.getItem("isLogged") == "true"){
-        this.router.navigate(["dashboard"])
-      }
+    if (localStorage.getItem('isLogged') == 'true') {
+      this.router.navigate(['dashboard']);
+    }
   }
-  
 
   login() {
-    if (this.userService.login(this.email, this.password)) {
-      localStorage.setItem("name", this.email.replace("@gmail.com",""))
-      localStorage.setItem("isLogged", "true")
-      this.router.navigate(["dashboard"]);
-    } else {
-      alert('Credenciales incorrectas');
-      localStorage.setItem("isLogged", "false")
+    let status;
+    let nurseID;
+    this.userService.login(this.email, this.password).subscribe(
+      (data) => {
+      status = data['status'];
+      if (status) {
+        nurseID = data['id'];
+        localStorage.setItem('name', this.email.replace('@gmail.com', ''));
+        localStorage.setItem('isLogged', 'true');
+        localStorage.setItem('nurseID', nurseID);
+        this.router.navigate(['dashboard']);
+      } else {
+        alert('Credenciales incorrectas');
+        localStorage.setItem('isLogged', 'false');
+      }
+    },
+    (error) => {
+      console.error(error);
     }
+  
+  );
+
+    // if (this.userService.login(this.email, this.password)) {
+    //   localStorage.setItem('name', this.email.replace('@gmail.com', ''));
+    //   localStorage.setItem('isLogged', 'true');
+    //   this.router.navigate(['dashboard']);
+    // } else {
+    //   alert('Credenciales incorrectas');
+    //   localStorage.setItem('isLogged', 'false');
+    // }
   }
 }

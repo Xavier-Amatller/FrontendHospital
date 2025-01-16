@@ -1,10 +1,18 @@
 import { Injectable } from '@angular/core';
 import NURSES from '../../assets/data/nurses.json';
-import { filter } from 'rxjs';
+import { filter, Observable } from 'rxjs';
+import { HttpClient,HttpHeaders } from '@angular/common/http';
+
+
 @Injectable({
   providedIn: 'root',
 })
 export class UsersService {
+
+  static url:String = "http://localhost:8000/";
+  static headers = new HttpHeaders({"Content-Type":"application/json"});
+  constructor(private conexHttp:HttpClient) { }
+
 
   getAllUsers(password: boolean): Array<any> {
     if (password) {
@@ -30,15 +38,15 @@ export class UsersService {
     );
   }
 
-  login(email: string, password: string) {
-    let nurses = this.getAllUsers(true);
-    return (
-      nurses.filter(
-        (nurse) =>
-          nurse.email.trim().toLowerCase() == email.trim().toLowerCase() &&
-          nurse.password.trim() == password.trim()
-      ).length == 1
-    );
+  login(email: string, password: string): Observable<any> {
+    let endpoint = UsersService.url + "nurse/login";
+
+    let data = {
+      "email": email,
+      "password": password
+    };
+
+    return this.conexHttp.post(endpoint,data,{headers:new HttpHeaders({"Content-Type":"application/json"})});
   }
 
   register(name: string, surname: string, email: string, password: string) {

@@ -11,9 +11,9 @@ import { LoginFormComponent } from './user/login-form/login-form.component';
 import { FormsModule } from '@angular/forms';
 import { DashboardComponent } from './user/dashboard/dashboard.component';
 import { LandingPageComponent } from './landing-page/landing-page.component';
-import { ListAllComponent } from './user/list-all/list-all.component';
 import { RegisterFormComponent } from './user/register-form/register-form.component';
 import { ProfileMenuComponent } from './user/profile-menu/profile-menu.component';
+import { provideHttpClient, withFetch } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -25,12 +25,11 @@ import { ProfileMenuComponent } from './user/profile-menu/profile-menu.component
     LoginFormComponent,
     DashboardComponent,
     LandingPageComponent,
-    ListAllComponent,
     RegisterFormComponent,
     ProfileMenuComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule],
-  providers: [],
+  providers: [provideHttpClient(withFetch())],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
