@@ -41,12 +41,12 @@ export class UsersService {
   login(email: string, password: string): Observable<any> {
     let endpoint = UsersService.url + "nurse/login";
 
-    let data = {
-      "email": email,
-      "password": password
-    };
+    let formData: FormData = new FormData();
+    formData.append("email", email);
+    formData.append("password", password);
+  
 
-    return this.conexHttp.post(endpoint,data,{headers:new HttpHeaders({"Content-Type":"application/json"})});
+    return this.conexHttp.post(endpoint,formData);
   }
 
   register(name: string, surname: string, email: string, password: string) {
