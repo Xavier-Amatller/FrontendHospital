@@ -1,20 +1,16 @@
 <div class="container-lg">
   <h3 class="mt-2 mb-5">Search nurse by its name</h3>
-  <form
-    class="d-flex col-12 col-md-6 col-lg-4"
-    role="search"
-  >
-    <input
-      class="form-control me-2"
-      type="search"
-      placeholder="Enter name"
-      aria-label="Search"
-      [(ngModel)]="name"
-      name="name"
-    />
+  <form class="d-flex col-12 col-md-6 col-lg-4" role="search">
+    <input class="form-control me-2" type="search" placeholder="Enter name" aria-label="Search" [(ngModel)]="name"
+      name="name" />
     <button class="btn btn-outline-success" type="submit" (click)="handleOnSearch()">Search</button>
   </form>
-  <div class="results" *ngIf="nurses.length != 0">
+
+  <div *ngIf="isLoading; else dataLoaded">
+    <p>Cargando datos, por favor espera...</p>
+  </div>
+
+  <ng-template #dataLoaded>
     <table class="table table-sm" border="1">
       <thead>
         <tr>
@@ -33,8 +29,12 @@
         </tr>
       </tbody>
     </table>
+  </ng-template>
+
+  <div *ngIf="!isLoading && nurses.length === 0">
+    <p>No se encontraron datos.</p>
+  </div>
+  <div *ngIf="!isNurseFound">
+    <p>No se ha encontrado ningun usuario con ese nombre.</p>
   </div>
 </div>
-<ng-template #notFound>
-  <p class="text-secondary my-4">No nurses found with this name</p>
-</ng-template>

@@ -21,12 +21,10 @@ export class LoginFormComponent implements OnInit {
   }
 
   login() {
-    let status;
     let nurseID;
     this.userService.login(this.email, this.password).subscribe(
       (data) => {
-      status = data['status'];
-      if (status) {
+      if (data['status']) {
         nurseID = data['id'];
         localStorage.setItem('name', this.email.replace('@gmail.com', ''));
         localStorage.setItem('isLogged', 'true');
