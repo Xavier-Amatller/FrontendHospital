@@ -13,7 +13,7 @@ export class HeaderComponent implements OnInit {
   }
 
   isLogged(): boolean {
-    return localStorage.getItem('isLogged') == 'true';
+    return localStorage.getItem('isLogged') == 'true' ? true : false;
   }
 
   closeSession() {

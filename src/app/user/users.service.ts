@@ -28,7 +28,7 @@ export class UsersService {
 
   getUserById(): Observable<any> {
     let endpoint =
-      UsersService.url + 'nurse/' + localStorage.getItem('nurseID');
+      UsersService.url + '' + localStorage.getItem('nurseID');
     return this.conexHttp.get(endpoint);
   }
 

@@ -1,9 +1,21 @@
 <div class="container-lg">
   <h3 class="mt-2 mb-5">Search nurse by its name</h3>
   <form class="d-flex col-12 col-md-6 col-lg-4" role="search">
-    <input class="form-control me-2" type="search" placeholder="Enter name" aria-label="Search" [(ngModel)]="name"
-      name="name" />
-    <button class="btn btn-outline-success" type="submit" (click)="handleOnSearch()">Search</button>
+    <input
+      class="form-control me-2"
+      type="search"
+      placeholder="Enter name"
+      aria-label="Search"
+      [(ngModel)]="name"
+      name="name"
+    />
+    <button
+      class="btn btn-outline-success"
+      type="submit"
+      (click)="handleOnSearch()"
+    >
+      Search
+    </button>
   </form>
 
   <div *ngIf="isLoading; else dataLoaded">
@@ -11,24 +23,31 @@
   </div>
 
   <ng-template #dataLoaded>
-    <table class="table table-sm" border="1">
-      <thead>
-        <tr>
-          <th scope="col">#</th>
-          <th scope="col">Name</th>
-          <th scope="col">Surname</th>
-          <th scope="col">Email</th>
-        </tr>
-      </thead>
-      <tbody class="mb-4">
-        <tr *ngFor="let nurse of nurses; let i = index">
-          <td>{{ i + 1 }}</td>
-          <td>{{ nurse.name }}</td>
-          <td>{{ nurse.surname }}</td>
-          <td>{{ nurse.email }}</td>
-        </tr>
-      </tbody>
-    </table>
+    <div style="height: 60vh; overflow-y: scroll">
+      <table class="table table-sm" border="1">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th>Profile picture</th>
+            <th scope="col">Name</th>
+            <th scope="col">Surname</th>
+            <th scope="col">Email</th>
+          </tr>
+        </thead>
+
+        <tbody class="mb-4">
+          <tr *ngFor="let nurse of nurses; let i = index">
+            <td>{{ i + 1 }}</td>
+            <td style="width: 3vw">
+              <img style="height: 10vh" src="{{ pfp }}" alt="profile image" />
+            </td>
+            <td>{{ nurse.name }}</td>
+            <td>{{ nurse.surname }}</td>
+            <td>{{ nurse.email }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </ng-template>
 
   <div *ngIf="!isLoading && nurses.length === 0">

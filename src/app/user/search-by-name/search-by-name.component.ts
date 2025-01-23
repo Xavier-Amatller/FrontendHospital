@@ -18,6 +18,7 @@ export class SearchByNameComponent {
   constructor(private userService: UsersService) { }
   nurses: any = [];
   isLoading: boolean = true;
+  pfp = 'https://www.w3schools.com/howto/img_avatar.png';
 
   ngOnInit(): void {
     console.log("antes peticion");
@@ -25,7 +26,6 @@ export class SearchByNameComponent {
     this.userService.getAllUsers().subscribe({
       next: (nurses) => {
         this.nurses = nurses;
-        console.log('Nurses:', nurses);
         this.isLoading = false;
 
       },
