@@ -16,8 +16,6 @@ export class ProfileMenuComponent implements OnInit {
   ngOnInit() {
     this.userService.getUserById().subscribe(
       (data) => {
-        console.log(data);
-        
         this.name = data['name'];
         this.surname = data['surname'];
         this.email = data['email'];
