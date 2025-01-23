@@ -1,18 +1,15 @@
 import { Injectable } from '@angular/core';
 import NURSES from '../../assets/data/nurses.json';
 import { filter, Observable } from 'rxjs';
-import { HttpClient,HttpHeaders } from '@angular/common/http';
-
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root',
 })
 export class UsersService {
-
-  static url:String = "http://localhost:8000/";
-  static headers = new HttpHeaders({"Content-Type":"application/json"});
-  constructor(private conexHttp:HttpClient) { }
-
+  static url: String = 'http://localhost:8000/';
+  static headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+  constructor(private conexHttp: HttpClient) {}
 
   getAllUsers(password: boolean): Array<any> {
     if (password) {
@@ -31,7 +28,7 @@ export class UsersService {
   }
 
   getUsersByName(name: string) {
-    if (name == "") return this.getAllUsers(false);
+    if (name == '') return this.getAllUsers(false);
     let nurses = this.getAllUsers(false);
     return nurses.filter(
       (nurse) => nurse.name.trim().toLowerCase() == name.trim().toLowerCase()
@@ -39,14 +36,18 @@ export class UsersService {
   }
 
   login(email: string, password: string): Observable<any> {
-    let endpoint = UsersService.url + "nurse/login";
+    let endpoint = UsersService.url + 'nurse/login';
 
     let formData: FormData = new FormData();
-    formData.append("email", email);
-    formData.append("password", password);
-  
+    formData.append('email', email);
+    formData.append('password', password);
 
-    return this.conexHttp.post(endpoint,formData);
+    return this.conexHttp.post(endpoint, formData);
+  }
+  getUserById(): Observable<any> {
+    let endpoint =
+      UsersService.url + 'nurse/' + localStorage.getItem('nurseID');
+    return this.conexHttp.get(endpoint);
   }
 
   register(name: string, surname: string, email: string, password: string) {
@@ -60,15 +61,15 @@ export class UsersService {
       return false;
     } else {
       NURSES.push({
-        "name": name,
-        "surname": surname,
-        "email": email,
-        "password": password
-      })
+        name: name,
+        surname: surname,
+        email: email,
+        password: password,
+      });
 
       console.log(this.getAllUsers(true));
 
-      return true
+      return true;
     }
   }
 }
