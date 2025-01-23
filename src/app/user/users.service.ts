@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
 import NURSES from '../../assets/data/nurses.json';
 import { filter, Observable } from 'rxjs';
+
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+
 
 
 @Injectable({
@@ -13,8 +15,6 @@ export class UsersService {
   static headers = new HttpHeaders({ "Content-Type": "application/json" });
   constructor(private conexHttp: HttpClient) { }
 
-
-
   getAllUsers(): Observable<any> {
     let endpoint = UsersService.url + "";
 
@@ -23,6 +23,13 @@ export class UsersService {
         'Content-Type': 'application/json',
       }),
     });
+  }
+
+
+  getUserById(): Observable<any> {
+    let endpoint =
+      UsersService.url + 'nurse/' + localStorage.getItem('nurseID');
+    return this.conexHttp.get(endpoint);
   }
 
   getUsersByName(name: string): Observable<any> {
@@ -68,6 +75,7 @@ export class UsersService {
     //   console.log(this.getAllUsers());
 
     return true
+
 
   }
 }
