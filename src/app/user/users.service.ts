@@ -78,4 +78,34 @@ export class UsersService {
 
     //   console.log(this.getAllUsers());
   }
+
+  editNurse(name: string, surname: string, email: string, password: string) : Observable<any>{ 
+    
+    const nurseID = localStorage.getItem('nurseID');
+    if (!nurseID) {
+      throw new Error('No nurseID found in localStorage');
+    }
+    let endpoint = UsersService.url + nurseID;
+
+    // let formData: FormData = new FormData();
+    // formData.append('name', name);
+    // formData.append('surname', surname);
+    // formData.append('email', email);
+    // formData.append('password', password);
+    
+    const params = new HttpParams()
+      .set('name', name)
+      .set('surname', surname)
+      .set('email', email)
+      .set('password', password);
+
+    return this.conexHttp.put(endpoint, null, {
+      headers: new HttpHeaders({
+      'Content-Type': 'application/json',
+      }),
+      params: params,
+    });
+    
+  }
+
 }

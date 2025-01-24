@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, } from '@angular/core';
 import { UsersService } from '../users.service';
 @Component({
   selector: 'app-profile-menu',
@@ -11,6 +11,7 @@ export class ProfileMenuComponent implements OnInit {
   name: string = '';
   surname: string = '';
   email: string = '';
+  password: string = '';
 
   constructor(private userService: UsersService) {}
   ngOnInit() {
@@ -27,7 +28,16 @@ export class ProfileMenuComponent implements OnInit {
   }
 
   onEdit() {
-    // Logic to edit profile
+    this.userService.editNurse(this.name, this.surname, this.email, this.password).subscribe(
+      (data)=>{
+        if(data){
+          console.log(data + " Nurse edited");
+        }
+      },
+      (error)=>{
+        console.error(error);
+      }
+    )
   }
   onDelete() {
     // Logic to edit profile
