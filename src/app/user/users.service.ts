@@ -4,19 +4,16 @@ import { filter, Observable } from 'rxjs';
 
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 
-
-
 @Injectable({
   providedIn: 'root',
 })
 export class UsersService {
-
-  static url: String = "http://localhost:8000/nurse/";
-  static headers = new HttpHeaders({ "Content-Type": "application/json" });
-  constructor(private conexHttp: HttpClient) { }
+  static url: String = 'http://localhost:8000/nurse/';
+  static headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+  constructor(private conexHttp: HttpClient) {}
 
   getAllUsers(): Observable<any> {
-    let endpoint = UsersService.url + "";
+    let endpoint = UsersService.url + '';
 
     return this.conexHttp.get(endpoint, {
       headers: new HttpHeaders({
@@ -25,15 +22,13 @@ export class UsersService {
     });
   }
 
-
   getUserById(): Observable<any> {
-    let endpoint =
-      UsersService.url + '' + localStorage.getItem('nurseID');
+    let endpoint = UsersService.url + '' + localStorage.getItem('nurseID');
     return this.conexHttp.get(endpoint);
   }
 
   getUsersByName(name: string): Observable<any> {
-    let endpoint = UsersService.url + "search_by_name";
+    let endpoint = UsersService.url + 'search_by_name';
     const params = new HttpParams().set('name', name);
 
     return this.conexHttp.get(endpoint, {
@@ -45,17 +40,26 @@ export class UsersService {
   }
 
   login(email: string, password: string): Observable<any> {
-    let endpoint = UsersService.url + "login";
+    let endpoint = UsersService.url + 'login';
 
     let formData: FormData = new FormData();
-    formData.append("email", email);
-    formData.append("password", password);
-
+    formData.append('email', email);
+    formData.append('password', password);
 
     return this.conexHttp.post(endpoint, formData);
   }
 
   register(name: string, surname: string, email: string, password: string) {
+    let endpoint = UsersService.url + '';
+
+    let formData: FormData = new FormData();
+    formData.append('name', name);
+    formData.append('surname', surname);
+    formData.append('email', email);
+    formData.append('password', password);
+
+    return this.conexHttp.post(endpoint, formData);
+
     // let nurses = this.getAllUsers();
     // if (
     //   nurses.filter(
@@ -73,9 +77,5 @@ export class UsersService {
     //   })
 
     //   console.log(this.getAllUsers());
-
-    return true
-
-
   }
 }
