@@ -6,15 +6,19 @@
     <form class="user-info mb-3">
       <div class="form-group">
         <label for="name"><strong>Name:</strong></label>
-        <input type="text" class="form-control" id="name" name="name" value="{{name}}"/>
+        <input [(ngModel)]="name" type="text" class="form-control" id="name" name="name" value="{{name}}"/>
       </div>
       <div class="form-group">
         <label for="name"><strong>Surname:</strong></label>
-        <input type="text" class="form-control" id="surname" name="name" value="{{surname}}" />
+        <input [(ngModel)]="surname" type="text" class="form-control" id="surname" name="surname" value="{{surname}}" />
       </div>
       <div class="form-group">
         <label for="email"><strong>Email:</strong></label>
-        <input type="email" class="form-control" id="email" name="email" value="{{email}}" />
+        <input [(ngModel)]="email" type="email" class="form-control" id="email" name="email" value="{{email}}" />
+      </div>
+      <div class="form-group">
+        <label for="password"><strong>New password:</strong></label>
+        <input [(ngModel)]="password" type="password" class="form-control" id="password" name="password"/>
       </div>
     </form>
     <div class="profile-actions d-flex gap-4">
