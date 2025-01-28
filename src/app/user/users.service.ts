@@ -10,7 +10,7 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 export class UsersService {
   static url: String = 'http://localhost:8000/nurse/';
   static headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-  constructor(private conexHttp: HttpClient) {}
+  constructor(private conexHttp: HttpClient) { }
 
   getAllUsers(): Observable<any> {
     let endpoint = UsersService.url + '';
@@ -79,8 +79,8 @@ export class UsersService {
     //   console.log(this.getAllUsers());
   }
 
-  editNurse(name: string, surname: string, email: string, password: string) : Observable<any>{ 
-    
+  editNurse(name: string, surname: string, email: string, password: string): Observable<any> {
+
     const nurseID = localStorage.getItem('nurseID');
     if (!nurseID) {
       throw new Error('No nurseID found in localStorage');
@@ -92,7 +92,7 @@ export class UsersService {
     // formData.append('surname', surname);
     // formData.append('email', email);
     // formData.append('password', password);
-    
+
     const params = new HttpParams()
       .set('name', name)
       .set('surname', surname)
@@ -101,11 +101,21 @@ export class UsersService {
 
     return this.conexHttp.put(endpoint, null, {
       headers: new HttpHeaders({
-      'Content-Type': 'application/json',
+        'Content-Type': 'application/json',
       }),
       params: params,
     });
-    
+
+  }
+
+  deleteNurse(nurseID: string): Observable<any> {
+    let endpoint = UsersService.url + "" + nurseID;
+
+    return this.conexHttp.delete(endpoint, {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+      }),
+    });
   }
 
 }
